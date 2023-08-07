@@ -1,7 +1,7 @@
 # dragonflye_bash_pipeline
 This is a bash script to run dragonflye as a pipeline.
 
-The pipeline assumes that you have conda installed and working and you have installed a new environment called dragonflye and installed dragonflye by following the instruction at: https://github.com/rpetit3/dragonflye
+The pipeline assumes that you have conda installed and working and you have installed dragonflye by following the instruction at: https://github.com/rpetit3/dragonflye and activated the environement befor running.
 
 The pipeline will take 4 mandatory inputs from the user.
 -l Folder containing long reads (Nanopore)
