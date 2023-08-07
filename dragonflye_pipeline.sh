@@ -1,5 +1,7 @@
 #!/bin/bash
+red_env="dragonflye"
 
+#help message
 display_help() {
   echo -e "Usage bash dragonflye_pipeline.sh \n \
   -l <Nanopore_reads_folder> \n \
