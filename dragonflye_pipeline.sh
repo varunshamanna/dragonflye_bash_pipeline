@@ -1,7 +1,5 @@
 #!/bin/bash
-red_env="dragonflye"
 
-#help message
 display_help() {
   echo -e "Usage bash dragonflye_pipeline.sh \n \
   -l <Nanopore_reads_folder> \n \
@@ -16,7 +14,7 @@ ram='120'
 gsize='5.5M'
 Racon_polish_steps='4'
 Medaka_polish_steps='1'
-Medaka_model=r941_min_sup_g507
+Medaka_model='r941_min_sup_g507'
 Polypolish_steps='1'
 Pilon_steps='0'
 
@@ -82,11 +80,11 @@ if [ ! -d "$nanopore_reads_dir" ]; then
 fi
 
 
-# Create the output dsirectory for Dragonflye
+# Create the output directory for Dragonflye
 output_dir="$output_folder"
 mkdir -p "$output_dir" || error_exit "Failed to create the output directory: $output_dir"
 
-# Run Dragonflye assembly for each ID in sample id file
+# Run Dragonflye assembly for each ID in the sample id file
 for id in `cat "$sample_ids"`; do
     # Assume the nanopore and Illumina fastq files follow a specific naming convention, adjust as per your files
     nanopore_fastq="$nanopore_reads_dir/"$id".fastq.gz"
@@ -103,18 +101,18 @@ for id in `cat "$sample_ids"`; do
 	dragonflye \
     		--gsize "$gsize" \
     		--R1 "$forward_fastq" \
-		--R2 "$reverse_fastq" \
+		    --R2 "$reverse_fastq" \
     		--reads "$nanopore_fastq" \
     		--cpus "$cpus" \
-		--ram "$ram" \
-		--prefix "$id" \
-		--racon 4 \
-		--medaka 1 \
-		--model "$Medaka_model" \
-                --polypolish "$Polypolish_steps" \
-                --pilon "$Pilon_steps" \
+		    --ram "$ram" \
+		    --prefix "$id" \
+		    --racon "$Racon_polish_steps" \
+		    --medaka "$Medaka_polish_steps" \
+		    --model "$Medaka_model" \
+        --polypolish "$Polypolish_steps" \
+        --pilon "$Pilon_steps" \
     		--outdir "$output_dir"/"$id" \
-		--force \
+		    --force \
     		|| error_exit "Dragonflye assembly failed for sample id "$id" : Please look into dragonflye.log in "$output_dir"/"$id""
     echo -e "\n \n The final assembly file is "$output_dir"/"$id"/"$id".fa"
 done
