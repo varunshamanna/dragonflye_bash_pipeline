@@ -117,4 +117,4 @@ for id in `cat "$sample_ids"`; do
     echo -e "\n \n The final assembly file is "$output_dir"/"$id"/"$id".fa"
 done
 
-echo "\n \n Pipeline completed successfully!"
+echo -e "\n \n Pipeline completed successfully!"
