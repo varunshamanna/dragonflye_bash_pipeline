@@ -103,18 +103,18 @@ for id in `cat "$sample_ids"`; do
 	dragonflye \
     		--gsize "$gsize" \
     		--R1 "$forward_fastq" \
-		    --R2 "$reverse_fastq" \
+		--R2 "$reverse_fastq" \
     		--reads "$nanopore_fastq" \
     		--cpus "$cpus" \
-		    --ram "$ram" \
-		    --prefix "$id" \
-		    --racon 4 \
-		    --medaka 1 \
-		    --model "$Medaka_model" \
-        --polypolish "$Polypolish_steps" \
-        --pilon "$Pilon_steps" \
+		--ram "$ram" \
+		--prefix "$id" \
+		--racon 4 \
+		--medaka 1 \
+		--model "$Medaka_model" \
+                --polypolish "$Polypolish_steps" \
+                --pilon "$Pilon_steps" \
     		--outdir "$output_dir"/"$id" \
-		    --force \
+		--force \
     		|| error_exit "Dragonflye assembly failed for sample id "$id" : Please look into dragonflye.log in "$output_dir"/"$id""
     echo -e "\n \n The final assembly file is "$output_dir"/"$id"/"$id".fa"
 done
