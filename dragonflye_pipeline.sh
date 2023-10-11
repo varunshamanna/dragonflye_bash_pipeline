@@ -12,7 +12,7 @@ display_help() {
 cpus='32'
 ram='120'
 gsize='5.5M'
-Racon_polish_steps='4'
+Racon_polish_steps='1'
 Medaka_polish_steps='1'
 Medaka_model='r941_min_sup_g507'
 Polypolish_steps='1'
